@@ -3,11 +3,7 @@ const app = express();
 const cors = require("cors");
 const config = require('./config');
 var swaggerUi = require("swagger-ui-express");
-var { initialize } = require("express-openapi");
 const swaggerDocs = require("./API-doc/api-doc")
-
-
-
 
 app.use(cors());
 app.use(express.json());
@@ -24,13 +20,6 @@ app.use('/users', users);
 app.use('/search', search);
 app.use('/groups', groups);
 
-/*// OpenAPI routes
-initialize({
-    app,
-    apiDoc: require("./API-doc/api-doc"),
-    paths: "./API-doc/paths",
-  });*/
-  
   // OpenAPI UI
   app.use(
     "/api-documentation",
