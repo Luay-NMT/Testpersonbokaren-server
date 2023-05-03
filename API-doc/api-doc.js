@@ -1,6 +1,5 @@
 const apiDoc = {
   swagger: "2.0",
-  basePath: "/",
   info: {
     title: "Testpersonbokaren API-spec",
     version: "1.0.0",
