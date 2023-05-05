@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 });
     var queryGetAllBookings = `SELECT b.bookingId,b.userId,b.bookingLogRef,u.fullName as 'ownerName',b.testpersonId,b.bookingTime FROM bookings b LEFT JOIN users u ON b.userId = u.userId`;
     connenction.query(queryGetAllBookings, (err, result) => {
-      connenction.destroy();
+      connenction.end();
 
         if (err) {
           console.log(err);
@@ -31,7 +31,7 @@ router.get("/", (req, res) => {
       var queryUpdateBooking = "UPDATE bookings " + "SET userId = ?, bookingLogRef = ? " + "WHERE testpersonId = ?";
 
       connenction.query(queryUpdateBooking, [userId, logRef, testpersonId], (err, result) => {
-        connenction.destroy();
+        connenction.end();
         if (err) { console.log(err); } else { res.send(result); }
       });
     });
@@ -44,7 +44,7 @@ router.get("/", (req, res) => {
       const id = req.params.id;
       var queryDeleteBookingBasedOnTestpersonId = "DELETE FROM bookings WHERE testpersonId = ?";
       connenction.query(queryDeleteBookingBasedOnTestpersonId, [id], (err, result) => {
-        connenction.destroy();
+        connenction.end();
         if (err) { console.log(err); } else { res.send(result); }
       });
     });
